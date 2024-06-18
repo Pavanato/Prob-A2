@@ -148,7 +148,46 @@ Chamando $lambda = - ln (G(1))$, temos que $G(x) = e^(-lambda x)$, ou seja, $X ~
 
 =
 
-#theorem("Caiu no testo uma parte", number: "6.1.4")[]
+#theorem("Caiu no teste uma parte", number: "6.1.4")[Seja $X$ uma v.a. com média $mu$ e mediana $m$. Então
+
+- O valor $c$ que minimiza $E(X - t)^2$ é $t = mu$.
+- O valor $c$ que minimiza $E|X - t|$ é $t = m$.
+]<test>
+
+#proof[Seja $f(t) = E(X - t)^2 = E(X^2 - 2 X t + t^2) = E(X^2) - 2 t E(X) + t^2$. Derivando em relação a $t$, temos
+
+$ f'(t) = -2 E(X) + 2 t $
+
+e igualando a zero concluímos que
+
+$ -2 E(X) + 2 t = 0 => t = E(X) = mu. $
+
+Já para $f(t) = E|X - t|$, não podemos derivar diretamente. Portanto, vamos provar que $E|X - t| >= E|X - m|$ para todo $t$. Podemos simplificar o problema da seguinte maneira
+
+$ E|X - t| >= E|X - m| ==> E(|X - t| - |X - m|) >= 0. $
+
+
+Assuma que $t > m$ (o caso $t < m$ é similar). Então, para $X <= m$ temos 
+
+$ |X - t| - |X - m| = -(X - t) -(m - X) = t - m, $
+
+e se $X > m$ temos
+
+$ |X - t| - |X - m| = X - t - (X - m) = m - t. $
+
+Seja $Y = |X - t| - |X - m|$, então, pela lei da esperança total, temos
+
+$ E(Y) &= E(Y | X <= m)P(X <= m) + E(Y | X > m)P(X > m) \
+&= E(t - m | X <= m)P(X <= m) + E(m - t | X > m)P(X > m) \
+&= (t - m)P(X <= m) + (m - t)P(X > m) \
+&= (t - m)P(X <= m) - (t - m)(1 - P(X <= m)) \
+&= 2(t - m)P(X <= m) - (t - m) = (t - m)(2P(X <= m) - 1). 
+$
+
+Como $P(X <= m) >= 1/2$, temos que $2P(X <= m) - 1 >= 0$, e portanto $E(Y) >= 0$. Concluindo que $E|X - t| >= E|X - m|$ para todo $t$.]
+
+
+
 =
 
 #theorem(number: "7.1.20")[Seja $f_(x y)$ a PDF conjunta de $X$ e $Y$ tal que
