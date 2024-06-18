@@ -84,7 +84,7 @@ $ P(X > s + t | X > s) = P((X > s + t) sect (X > s))/P(X > s) = P(X > s + t)/P(X
 
 #theorem(number: "5.5.3")[Se $X$ é uma v.a. contínua com a propriedade da não memória, então $X$ é uma v.a. exponencial.]
 
-#proof[Seja $F$ a CDF de $X$ e $G(x) = P(X > x) = 1 - F(x)$. Pela propriedade da não memória, temos
+#proof(title: "Prova 1")[Seja $F$ a CDF de $X$ e $G(x) = P(X > x) = 1 - F(x)$. Pela propriedade da não memória, temos
 
 $ G(s+t) = G(s)G(t) $
 
@@ -102,10 +102,51 @@ $ G(t) = K e^(-lambda t) $
 
 onde $lambda = G'(0)$, e $K = G(0) = 1$. Portanto, $X ~ text("Expo")(lambda)$.]
 
+#proof(title: "Prova 2")[Usando o resultado da *prova 1:* $G(s+t) = G(s)G(t)$, podemos mostrar que $G$ é uma função exponencial. Note que $G(0) = 1$, pois
+
+$ G(0) = G(0 + 0) = G(0)G(0) = G(0)^2 $
+
+E se $G(0) = 0$, então $G(t) = 0$ para todo $t$, o que é absurdo, pois $G(t) = P(X > t)$. Portanto, $G(0) = 1$. Podemos encontrar $G(2)$ da seguinte forma
+
+$ G(2) = G(1 + 1) = G(1)G(1) = G(1)^2 $
+
+De forma similar $G(3)$ é
+
+$ G(3) = G(1 + 2) = G(1)G(2) = G(1)G(1)^2 = G(1)^3 $
+
+podemos provar por indução que $G(n) = G(1)^n$, para $n$ inteiro positivo da seguinte forma
+
+$ G(n) = G(1)^n $
+
+$ G(n + 1) = G(n)G(1) = G(1)^n G(1) = G(1)^(n+1). $
+
+Queremos estender essa propriedade para $n$ racional, para isso observe que 
+
+$ G(1) = G(1/n + dots +1/n) $
+
+com $n$ termos, então
+
+$ G(1) = G(1/n)G(1/n) dots G(1/n) = G(1/n)^n $
+
+e portanto
+
+$ G(1/n) = G(1)^(1/n) $
+
+e para $m$ inteiro positivo, temos
+
+$ G(m/n) = G(1/n + dots + 1/n) = G(1/n)G(1/n) dots G(1/n) = G(1/n)^m = G(1)^(m/n) $
+
+A extensão para $x$ real positivo vem com a pré requesito de um entendimento de análise real, portanto não será feito aqui. Portanto, $G(x) = G(1)^x$. Por fim, observe que
+
+$ G(x) = G(1)^x = e^(ln (G(1)^x)) = e^(x ln (G(1))) $
+
+Chamando $lambda = - ln (G(1))$, temos que $G(x) = e^(-lambda x)$, ou seja, $X ~ text("Expo")(lambda)$.]
+
+
+
 =
 
-Vazio por hora
-
+#theorem("Caiu no testo uma parte", number: "6.1.4")[]
 =
 
 #theorem(number: "7.1.20")[Seja $f_(x y)$ a PDF conjunta de $X$ e $Y$ tal que
@@ -134,7 +175,7 @@ Segue que $integral_(- infinity)^(infinity)g(x)d x = 1$ já que $f_X$ é uma PDF
 
 
 
-
+#theorem("independente implica corr = 0")[asd]
 
 
 
