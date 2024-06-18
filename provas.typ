@@ -58,9 +58,14 @@
   + Seja $U = F(X)$, então $ P(U <= u) = P(F(X) <= u) = P(X <= F^(-1)(u)) = F(F^(-1)(u)) = u. $
 ]<universal>
 
-#context counter(heading).update((7,1,20))
 
-#theorem[Seja $f_(x y)$ a PDF conjunta de $X$ e $Y$ tal que
+=
+
+Vazio por hora
+
+=
+
+#theorem(number: "7.1.20")[Seja $f_(x y)$ a PDF conjunta de $X$ e $Y$ tal que
 
 $ f_(x y)(x,y) = g(x)h(y) $
 
@@ -159,4 +164,39 @@ $ P(Y >= e^(t a)) <= E(Y)/e^(t a) = E(e^(t X))/e^(t a) $
 Portanto
 
 $ P(X >= a) <= e^(-t a) M_X(t) = E(e^(t X))/e^(t a) $
+]
+
+#definition("convexidade e concavidade")[Seja $g$ uma função duas vezes diferenciável. Dizemos que $g$ é convexa se $g''(x) >= 0$ para todo $x$ e concava se $g''(x) <= 0$ para todo $x$.]
+  
+#theorem("Desigualdade de Jensen")[ Seja $X$ uma variável aleatória e $g$ uma função convexa, então
+
+$ g(E(X)) <= E(g(X)) $
+
+Se $g$ é concava, a desigualdade é invertida, ou seja,
+
+$ g(E(X)) >= E(g(X)) $
+
+onde a igualdade vale se, e somente se, $g(X) = a + b X$ com probabilidade 1.
+]
+
+#proof[ Se $g$ é convexa, então $g''(x) >= 0$ para todo $x$. E seja $a + b X$ a reta tangente a $g$ em $E(X)$, então temos
+
+$ g(X) >= a + b X $
+
+aplicando a esperança em ambos os lados, temos
+
+$ E(g(X)) >= a + b E(X) = g(E(X)) $
+
+Onde a igualdade vale pois a reta é tangente em $E(X)$. 
+
+Usando a mesma $g$, temos que $h = -g$ é concava, usando a desigualdade encontrada acima, temos
+
+$ E(-h(X)) >= -h(E(X)) ==> -E(h(X)) >= -h(E(X)) $
+
+multiplicando por $-1$ em ambos os lados, temos
+
+$ E(h(X)) <= h(E(X)) $
+
+
+
 ]
