@@ -1,6 +1,8 @@
 #import "theorems.typ": *
 #show: thmrules.with(qed-symbol: $square$)
 
+#set page(numbering: "1")
+
 // #set page(margin: 1.5cm)
 #set text(font: "Linux Libertine", lang: "pt")
 #set heading(numbering: "1.")
@@ -175,7 +177,27 @@ Segue que $integral_(- infinity)^(infinity)g(x)d x = 1$ já que $f_X$ é uma PDF
 
 
 
-#theorem("independente implica corr = 0")[asd]
+#theorem("independente implica corr = 0", number: "7.3.2")[Sejam $X$ e $Y$ v.a. independentes. Então, $"corr"(X,Y) = 0$.]
+  
+
+#proof[Como a fórmula da correlação é
+
+$ "corr"(X,Y) = "cov"(X,Y)/(sqrt("var"(X)"var"(Y))) $
+
+Basta mostrar que a covariância é zero. Como $X$ e $Y$ são independentes, temos que
+
+$ "cov"(X,Y) = E(X Y) - E(X)E(Y) = E(X)E(Y) - E(X)E(Y) = 0 $
+
+e a prova de que $E(X Y) = E(X)E(Y)$ é, no caso contínuo,
+
+$ E(X Y) &= integral_(- infinity)^(infinity)integral_(- infinity)^(infinity)x y f_(x y)(x,y)d x d y  \ &= integral_(- infinity)^(infinity)integral_(- infinity)^(infinity)x y f_X(x)f_Y(y)d x d y \ &= integral_(- infinity)^(infinity)x f_X(x)d x integral_(- infinity)^(infinity)y f_Y(y)d y = E(X)E(Y) $
+
+E no caso discreto
+
+$ E(X Y) &= sum_(x)sum_(y)x y f_(x y)(x,y) \ &= sum_(x)sum_(y)x y f_X(x)f_Y(y) \ &= sum_(x)x f_X(x)sum_(y)y f_Y(y) = E(X)E(Y) $
+]
+
+*Observação:* A recíproca não é verdadeira, ou seja, $"corr"(X, Y) = 0$ não implica independência. 
 
 
 
