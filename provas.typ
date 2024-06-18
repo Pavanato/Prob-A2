@@ -58,6 +58,49 @@
   + Seja $U = F(X)$, então $ P(U <= u) = P(F(X) <= u) = P(X <= F^(-1)(u)) = F(F^(-1)(u)) = u. $
 ]<universal>
 
+#theorem("Propriedades da Normal", numbering: none)[Seja $Z ~ text(N)(0,1)$ com PDF $phi(z)$ e CDF $Phi(z)$. Então, as seguintes propriedades valem:
+  
+- Simetria: $phi(z) = phi(-z)$
+- Simetria das caudas: $Phi(z) = 1 - Phi(-z)$
+- Simetria entre Z e -Z: $Phi_(-Z)(z) = Phi_(Z)(z)$
+]
+
+#proof[
+  - A simetria é trivial, pois $phi(z) = (1/sqrt(2 pi))e^(-z^2/2) = (1/sqrt(2 pi))e^(-(-z)^2/2) = phi(-z)$.
+
+  - A simetria das caudas é dada por $Phi(z) = integral_(- infinity)^(z)phi(t) d t = integral_(- infinity)^(z)phi(-t)d t = - integral_(infinity)^(-z)phi(u)d u = 1 - integral_(-infinity)^(-z)phi(u)d u = 1 - Phi(-z)$. 
+
+  - A simetria entre $Z$ e $-Z$ é dada por $Phi_(-Z)(z) = P(-Z <= z) = P(Z >= -z) = 1 - P(Z <= -z) = 1 - Phi(-z) = Phi(z)$.
+]
+
+#definition(number: "5.5.2", "Propriedade da não memória")[ Dizemos que uma v.a. $X$ tem a propriedade da não memória se, para todo $s, t > 0$, vale
+
+$ P(X > s + t | X > s) = P(X > t) $
+]
+
+Note que se $X ~ text("Expo")(lambda) $, então $X$ tem a propriedade da não memória. Pois
+
+$ P(X > s + t | X > s) = P((X > s + t) sect (X > s))/P(X > s) = P(X > s + t)/P(X > s) = e^(-lambda(s + t))/e^(-lambda s) = e^(-lambda t) = P(X > t) $
+
+#theorem(number: "5.5.3")[Se $X$ é uma v.a. contínua com a propriedade da não memória, então $X$ é uma v.a. exponencial.]
+
+#proof[Seja $F$ a CDF de $X$ e $G(x) = P(X > x) = 1 - F(x)$. Pela propriedade da não memória, temos
+
+$ G(s+t) = G(s)G(t) $
+
+pois $G(s+t) = P(X > s + t) = P(X > s + t | X > s)P(X > s) = P(X > t)P(X > s) = G(t)G(s)$, a segunda igualdade decorre da lei da probabilidade total e de que $P(X > s + t | X <= s) = 0$. Diferenciando em relação a $s$, temos
+
+$ G'(s + t) = G'(s)G(t) $
+
+e quando $s = 0$ 
+
+$ G'(t) = G'(0)G(t) $
+
+resolvendo a equação diferencial, temos
+
+$ G(t) = K e^(-lambda t) $
+
+onde $lambda = G'(0)$, e $K = G(0) = 1$. Portanto, $X ~ text("Expo")(lambda)$.]
 
 =
 
