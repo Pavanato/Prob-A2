@@ -255,7 +255,7 @@ $ E(X) = sum_(i = 1)^(n)E(X|A_i)P(A_i) $
 
 $ E(E(X|Y)) &= E(X) $
 
-Considerando $Y$ uma v.a. discreta, e $g(y) = E(X|Y = y)$ (note que $g(Y) = E(X|Y = Y) = E(X|Y)$), então
+Considerando $Y$ uma v.a. discreta, e $g(y) = E(X|Y = y)$, então
 
 $ E(E(X|Y)) = E(g(Y)) = sum_y g(y)P(Y = y) = sum_y E(X|Y = y) P(Y = y)
 $
@@ -287,6 +287,32 @@ $ E(E(Y|X)) = E(Y) $
     &= sum_y y P(Y=y) = E(Y) $
   
     Portanto, $E(E(Y|X)) = E(Y)$. Para o caso contínuo, a prova é análoga.]
+
+#let var = $op("Var")$
+
+#theorem("Lei de Eva", number: "9.5.4")[Para quaisquer v.a.s $X$ e $Y$ vale
+
+$ var(Y) = E(var(Y|X)) + var(E(Y|X)) $
+
+O nome da lei vem de que a ordem de esperanças e variâncias é $"EVVE"$, onde em inglês $"EVE"$ é o nome de Eva.
+]
+
+#proof[Seja $g(X) = E(Y|X)$, então pela lei de Adão $E(Y) = E(E(Y|X)) = E(g(X))$. Então
+
+$ E(var(Y|X)) &= E(E(Y^2|X) - E(Y|X)^2) \ &= E(E(Y^2|X)) - E(E(Y|X))^2 \ 
+    &= E(Y^2) - E(g(X))^2 $
+
+  e
+
+$ var(E(Y|X)) &= var(g(X)) \ &= E(g(X)^2) - E(g(X))^2 \ 
+  &= E(g(X)^2) - E(Y)^2 $
+
+  Por fim, somando as duas equações, temos
+
+$ E(var(Y|X)) + var(E(Y|X)) &= E(Y^2) - E(g(X))^2 + E(g(X)^2) - E(Y)^2 \ &= E(Y^2) - E(Y)^2 = var(Y) $
+]
+
+
 
 =
 vazio por hora
