@@ -124,9 +124,9 @@ $ G(n + 1) = G(n)G(1) = G(1)^n G(1) = G(1)^(n+1). $
 
 Queremos estender essa propriedade para $n$ racional, para isso observe que 
 
-$ G(1) = G(1/n + dots +1/n) $
+$ G(1) = G(underbrace(1/n + dots +1/n, "n termos")), $
 
-com $n$ termos, então
+então
 
 $ G(1) = G(1/n)G(1/n) dots G(1/n) = G(1/n)^n $
 
@@ -136,7 +136,7 @@ $ G(1/n) = G(1)^(1/n) $
 
 e para $m$ inteiro positivo, temos
 
-$ G(m/n) = G(1/n + dots + 1/n) = G(1/n)G(1/n) dots G(1/n) = G(1/n)^m = G(1)^(m/n) $
+$ G(m/n) = G(underbrace(1/n + dots + 1/n, "m termos")) = G(1/n) dots G(1/n) = G(1/n)^m = G(1)^(m/n) $
 
 A extensão para $x$ real positivo vem com a pré requesito de um entendimento de análise real, portanto não será feito aqui. Portanto, $G(x) = G(1)^x$. Por fim, observe que
 
@@ -240,12 +240,56 @@ $ E(X Y) &= sum_(x)sum_(y)x y f_(x y)(x,y) \ &= sum_(x)sum_(y)x y f_X(x)f_Y(y) \
 
 
 
+=
+vazio por hora
+=
+
+#context counter(heading).update((9,1,4))
+
+#theorem(number: "9.1.5", "lei da esperança total")[Seja $A_1, dots, A_n$ uma partição do espaço amostral, onde $P(A_i) > 0$ para todo $i$, e $X$ uma v.a. Então
+
+$ E(X) = sum_(i = 1)^(n)E(X|A_i)P(A_i) $
+]
+
+#proof[Pelo *Teorema 9.3.7* (Lei de Adão), temos que
+
+$ E(E(X|Y)) &= E(X) $
+
+Considerando $Y$ uma v.a. discreta, e $g(y) = E(X|Y = y)$ (note que $g(Y) = E(X|Y = Y) = E(X|Y)$), então
+
+$ E(E(X|Y)) = E(g(Y)) = sum_y g(y)P(Y = y) = sum_y E(X|Y = y) P(Y = y)
+$
+
+Fazendo a relação $A_i = {Y = i}$, temos
+
+$ E(E(X|Y)) = sum_y E(X|Y = y) P(Y = y) = sum_(i = 1)^(n) E(X|A_i)P(A_i) = E(X) $
+
+Portanto, $E(X) = sum_(i = 1)^(n)E(X|A_i)P(A_i)$. Para o caso contínuo, a prova é análoga.]
 
 
 
+#theorem(number: "9.3.7", "Lei de Adão")[ Para quaisquer v.a.s $X$ e $Y$ vale
 
+$ E(E(Y|X)) = E(Y) $
+]
 
+#proof[Para $X$ e $Y$ discretas e $g(X) = E(Y|X)$, temos
 
+ $ E(g(X)) &= sum_x g(x)P(X=x) \
+  &= sum_x E(Y|X=x)P(X=x) \
+  &= sum_x (sum_y y P(Y=y|X=x))P(X=x) \
+ $
+
+ Lembre-se que $P(A sect B) = P(A|B)P(B)$, então
+
+  $ E(g(X)) &= sum_x sum_y y P(Y=y|X=x)P(X=x) \
+    &= sum_y y sum_x P(Y=y sect X=x) \
+    &= sum_y y P(Y=y) = E(Y) $
+  
+    Portanto, $E(E(Y|X)) = E(Y)$. Para o caso contínuo, a prova é análoga.]
+
+=
+vazio por hora
 
 
 #pagebreak()
@@ -341,7 +385,5 @@ $ E(-h(X)) >= -h(E(X)) ==> -E(h(X)) >= -h(E(X)) $
 multiplicando por $-1$ em ambos os lados, temos
 
 $ E(h(X)) <= h(E(X)) $
-
-
-
 ]
+
