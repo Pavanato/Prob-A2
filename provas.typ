@@ -43,6 +43,9 @@
 }
 )
 
+#let var = $op("Var")$
+
+
 #context counter(heading).update(4)
 
 = 
@@ -238,7 +241,25 @@ $ E(X Y) &= sum_(x)sum_(y)x y f_(x y)(x,y) \ &= sum_(x)sum_(y)x y f_X(x)f_Y(y) \
 
 *Observação:* A recíproca não é verdadeira, ou seja, $"corr"(X, Y) = 0$ não implica independência. 
 
+#theorem(number: "7.5.2")[Dentro de uma distribuição normal multivariada (MVN), não correlacionadas implica independência. Ou seja, se $bold(X) tilde (bold(X)_1, bold(X)_2)$, onde $bold(X)_1$ e $bold(X)_2$ são subvetores de $bold(X)$, e $"corr"(bold(X)_1, bold(X)_2) = 0$, então $bold(X)_1$ e $bold(X)_2$ são independentes.]
 
+#proof[A prova será feita para o caso bivariado, onde a prova em maiores dimensões é análoga. Seja $bold(X) = (X, Y)$, onde $W = s X + t Y$ é uma normal univariada para todo $s, t$. Lembrando que a MGF de uma normal é
+
+$ M_W (t_1, ..., t_n) = exp(t_1 E(X_1) + ... + t_k E(X_k) + 1/2 var(t_1 X_1 + ... + t_k X_k)) $
+
+Então, a MGF de $W$ é
+
+$ M_W (s, t) = exp(s E(X) + t E(Y) + 1/2 var(s X + t Y)) $
+
+Chamando $E(X) = mu_X$, $E(Y) = mu_Y$, $var(X) = sigma_X^2$, $var(Y) = sigma_Y^2$ e $"corr"(X, Y) = rho$, temos
+
+$ M_W (s, t) = exp(s mu_X + t mu_Y + 1/2 (s^2 sigma_X^2 + t^2 sigma_Y^2 + 2 s t rho sigma_X sigma_Y)) $
+
+Se $rho = 0$, então
+
+$ M_W (s, t) &= exp(s mu_X + t mu_Y + 1/2 (s^2 sigma_X^2 + t^2 sigma_Y^2)) \ &=exp(s mu_X + 1/2 s^2 sigma_X^2) exp(t mu_Y + 1/2 t^2 sigma_Y^2) $
+
+Porém isto é a MGF de $X$ e $Y$ separadamente, o que implica que $X$ e $Y$ são independentes. Portanto, $"corr"(X, Y) = 0$ implica independência (em multivariadas)]
 
 =
 
@@ -336,7 +357,6 @@ $ E(E(Y|X)) = E(Y) $
   
     Portanto, $E(E(Y|X)) = E(Y)$. Para o caso contínuo, a prova é análoga.]
 
-#let var = $op("Var")$
 
 #theorem("Lei de Eva", number: "9.5.4")[Para quaisquer v.a.s $X$ e $Y$ vale
 
