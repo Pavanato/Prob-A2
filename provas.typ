@@ -271,6 +271,25 @@ $
 
 Analogamente para $f_T(t) = integral_(- infinity)^(infinity)f_X (t - y)f_Y (y)d y$.]
 
+#theorem(number: "8.4.3", "Gamma = soma expo")[ Sejam $X_1, dots, X_n$ v.a.s independentes com $X_i tilde text("Expo")(lambda)$. Então 
+
+$ X_1 + dots + X_2 tilde "Gamma"(n, lambda) $
+]
+
+#proof[A MGF de $X_i$ é $M(t) = lambda/(lambda-t)$, então a MGF da soma é
+
+$ M_(X_1 + dots + X_n)(t) = M_(X_1)(t) times dots times M_(X_n)(t) = (lambda/(lambda-t))^n $
+
+Para $t < lambda$. Seja $Y tilde "Gamma"(n, lambda)$, então a MGF de $Y$ é
+
+$ M_Y (t) = E(e^(t Y)) &=  integral_0^(infinity) 1/Gamma(n) e^(t y) (lambda y)^(n)e^(-lambda y) (d y)/y \
+&= lambda^n integral_0^(infinity) 1/Gamma(n) y^(n)e^(-(lambda - t) y) (d y)/y \
+&= (lambda^n)/(lambda - t)^n integral_0^(infinity) 1/Gamma(n) ((lambda - t)y)^(n)e^(-(lambda - t) y) (d y)/y \
+&= (lambda^n)/(lambda - t)^n 
+$
+
+Na segunda igualdade apenas foi retirado o $lambda^n$ da integral. E na terceira foi multiplicado e dividido por $(lambda - t)^n$ e nota-se que a integral restante é a PDF de uma v.a. $"Gamma"(n, lambda - t)$. Portanto, comos as MGFs são iguais, temos que $X_1 + dots + X_n tilde "Gamma"(n, lambda)$.]
+
 =
 
 #context counter(heading).update((9,1,4))
