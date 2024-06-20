@@ -73,7 +73,7 @@
 #proof[
   - A simetria é trivial, pois $phi(z) = (1/sqrt(2 pi))e^(-z^2/2) = (1/sqrt(2 pi))e^(-(-z)^2/2) = phi(-z)$.
 
-  - A simetria das caudas é dada por $Phi(z) = integral_(- infinity)^(z)phi(t) d t = integral_(- infinity)^(z)phi(-t)d t = - integral_(infinity)^(-z)phi(u)d u = 1 - integral_(-infinity)^(-z)phi(u)d u = 1 - Phi(-z)$. 
+  - A simetria das caudas é dada por $Phi(z) = integral_(- infinity)^(z)phi(t) d t = integral_(- infinity)^(z)phi(-t)d t = - integral_(infinity)^(-z)phi(u)d u = integral_(-z)^(infinity)phi(u)d u =1 - integral_(-infinity)^(-z)phi(u)d u = 1 - Phi(-z)$. 
 
   - A simetria entre $Z$ e $-Z$ é dada por $Phi_(-Z)(z) = P(-Z <= z) = P(Z >= -z) = 1 - P(Z <= -z) = 1 - Phi(-z) = Phi(z)$.
 ]
