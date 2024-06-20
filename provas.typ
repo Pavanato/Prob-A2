@@ -102,7 +102,7 @@ resolvendo a equação diferencial, temos
 
 $ G(t) = K e^(-lambda t) $
 
-onde $lambda = G'(0)$, e $K = G(0) = 1$. Portanto, $X ~ text("Expo")(lambda)$.]
+onde $lambda = -G'(0)$, e $K = G(0) = 1$. Portanto, $X ~ text("Expo")(lambda)$.]
 
 #proof(title: "Prova 2")[Usando o resultado da *prova 1:* $G(s+t) = G(s)G(t)$, podemos mostrar que $G$ é uma função exponencial. Note que $G(0) = 1$, pois
 
@@ -241,7 +241,36 @@ $ E(X Y) &= sum_(x)sum_(y)x y f_(x y)(x,y) \ &= sum_(x)sum_(y)x y f_X(x)f_Y(y) \
 
 
 =
-vazio por hora
+
+#theorem("Convolução", number: "8.2.1")[ Sejam $X$ e $Y$ v.a.s independentes discretas, então a PMF da sua soma $T = X+Y$ é
+
+$ P(T = t) = sum_x P(Y = t - x)P(X = x) $
+$ P(T = t) = sum_y P(X = t - y)P(Y = y) $
+
+E para o caso contínuo, a PDF da soma é
+
+$ f_T(t) = integral_(- infinity)^(infinity)f_Y (t - x)f_X (x)d x $
+$ f_T(t) = integral_(- infinity)^(infinity)f_X (t - y)f_Y (y)d y $
+]
+
+#proof[Para o caso discreto, temos
+
+$ P(T = t) = P(X + Y = t) attach(=, t: "LOTP")& sum_(x)P(X + Y = t|X = x)P(X = x) \
+=& sum_(x) P(Y = t - x|X=x)P(X = x) \
+=& sum_(x)P(Y = t - x)P(X = x) 
+$
+
+De forma análoga, pode-se provar para $P(T = t) = sum_y P(X = t - y)P(Y = y)$.
+
+Note que a terceira igualdade é verdadeira pois $X$ e $Y$ são independentes. Para o caso contínuo:
+
+$ f_T(t) = P(T <= t) =& P(X + Y <= t)  \ attach(=, t: "LOTP") &integral_(- infinity)^(infinity)P(X + Y <= t|X = x)f_X (x)d x \
+=& integral_(- infinity)^(infinity)P(Y <= t - x)f_X (x)d x \
+=& integral_(- infinity)^(infinity)f_Y (t - x)f_X (x)d x
+$
+
+Analogamente para $f_T(t) = integral_(- infinity)^(infinity)f_X (t - y)f_Y (y)d y$.]
+
 =
 
 #context counter(heading).update((9,1,4))
@@ -363,7 +392,7 @@ $ P(|X - mu| >= a) <= (sigma^2)/(a^2) $
 #theorem("Desigualdade de Chernoff")[
 Seja $X$ uma variável aleatória com média $mu$. Então, para todo $a > 0$,
 
-$ P(X >= mu + a) <= e^(-t a) M_X(t) = E(e^(t X))/e^(t a) $
+$ P(X >= a) <= e^(-t a) M_X(t) = E(e^(t X))/e^(t a) $
 
 onde $M_X(t)$ é a função geradora de momentos de $X$.
 ]
