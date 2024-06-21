@@ -87,7 +87,7 @@ Note que se $X ~ text("Expo")(lambda) $, então $X$ tem a propriedade da não me
 
 $ P(X > s + t | X > s) = P((X > s + t) sect (X > s))/P(X > s) = P(X > s + t)/P(X > s) = e^(-lambda(s + t))/e^(-lambda s) = e^(-lambda t) = P(X > t) $
 
-#theorem(number: "5.5.3")[Se $X$ é uma v.a. contínua com a propriedade da não memória, então $X$ é uma v.a. exponencial.]
+#theorem(number: "5.5.3")[Se $X$ é uma v.a. contínua positiva com a propriedade da não memória, então $X$ é uma v.a. exponencial.]
 
 #proof(title: "Prova 1")[Seja $F$ a CDF de $X$ e $G(x) = P(X > x) = 1 - F(x)$. Pela propriedade da não memória, temos
 
@@ -164,6 +164,8 @@ $ f'(t) = -2 E(X) + 2 t $
 e igualando a zero concluímos que
 
 $ -2 E(X) + 2 t = 0 => t = E(X) = mu. $
+
+E esse ponto é de mínimo, pois $f''(t) = 2 > 0$, ou por conta da função ser uma parábola para cima.
 
 Já para $f(t) = E|X - t|$, não podemos derivar diretamente. Portanto, vamos provar que $E|X - t| >= E|X - m|$ para todo $t$. Podemos simplificar o problema da seguinte maneira
 
