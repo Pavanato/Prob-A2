@@ -255,7 +255,7 @@ $ M_W (s, t) = exp(s E(X) + t E(Y) + 1/2 var(s X + t Y)) $
 
 Chamando $E(X) = mu_X$, $E(Y) = mu_Y$, $var(X) = sigma_X^2$, $var(Y) = sigma_Y^2$ e $"corr"(X, Y) = rho$, temos
 
-$ M_W (s, t) = exp(s mu_X + t mu_Y + 1/2 (s^2 sigma_X^2 + t^2 sigma_Y^2 + 2 s t rho sigma_X sigma_Y)) $
+$ M_W (s, t) = exp(s mu_X + t mu_Y + 1/2 (s^2 sigma_X^2 + t^2 sigma_Y^2 + 2 s t rho)) $
 
 Se $rho = 0$, então
 
